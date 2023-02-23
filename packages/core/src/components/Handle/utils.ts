@@ -61,7 +61,7 @@ type Result = {
   connection: Connection;
 };
 
-const nullConnection: Connection = { source: null, target: null, sourceHandle: null, targetHandle: null };
+const nullConnection: Connection = { source: null, target: null, sourceHandle: null, targetHandle: null, sourceDataType: null, targetDataType: null };
 
 // checks if  and returns connection in fom of an object { source: 123, target: 312 }
 export function isValidHandle(
@@ -70,6 +70,7 @@ export function isValidHandle(
   connectionMode: ConnectionMode,
   fromNodeId: string,
   fromHandleId: string | null,
+  fromDataType: string | null,
   fromType: string,
   isValidConnection: ValidConnectionFunc,
   doc: Document | ShadowRoot
@@ -92,12 +93,15 @@ export function isValidHandle(
     const handleType = getHandleType(undefined, handleToCheck);
     const handleNodeId = handleToCheck.getAttribute('data-nodeid');
     const handleId = handleToCheck.getAttribute('data-handleid');
+    const handleDataType = handleToCheck.getAttribute('data-datatype');
 
     const connection: Connection = {
       source: isTarget ? handleNodeId : fromNodeId,
       sourceHandle: isTarget ? handleId : fromHandleId,
       target: isTarget ? fromNodeId : handleNodeId,
       targetHandle: isTarget ? fromHandleId : handleId,
+      sourceDataType: isTarget ? handleDataType : fromDataType,
+      targetDataType: isTarget ? fromDataType : handleDataType
     };
 
     result.connection = connection;

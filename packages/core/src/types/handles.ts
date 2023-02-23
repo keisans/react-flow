@@ -11,6 +11,7 @@ export interface StartHandle {
   nodeId: string;
   type: HandleType;
   handleId?: string | null;
+  handleDataType: string | null;
 }
 
 export interface HandleProps {
@@ -20,4 +21,5 @@ export interface HandleProps {
   onConnect?: OnConnect;
   isValidConnection?: (connection: Connection) => boolean;
   id?: string;
+  dataType?: string;
 }

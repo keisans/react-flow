@@ -40,6 +40,8 @@ export default (EdgeComponent: ComponentType<EdgeProps>) => {
     hidden,
     sourceHandleId,
     targetHandleId,
+    sourceDataType,
+    targetDataType,
     onContextMenu,
     onMouseEnter,
     onMouseMove,
@@ -96,6 +98,7 @@ export default (EdgeComponent: ComponentType<EdgeProps>) => {
 
       const nodeId = isSourceHandle ? target : source;
       const handleId = (isSourceHandle ? targetHandleId : sourceHandleId) || null;
+      const handleDataType = (isSourceHandle ? targetDataType : sourceDataType) || null;
       const handleType = isSourceHandle ? 'target' : 'source';
       const isValidConnection = () => true;
       const isTarget = isSourceHandle;
@@ -114,6 +117,7 @@ export default (EdgeComponent: ComponentType<EdgeProps>) => {
       handlePointerDown({
         event,
         handleId,
+        handleDataType,
         nodeId,
         onConnect: onConnectEdge,
         isTarget,
@@ -194,6 +198,8 @@ export default (EdgeComponent: ComponentType<EdgeProps>) => {
             sourcePosition={sourcePosition}
             targetPosition={targetPosition}
             sourceHandleId={sourceHandleId}
+            sourceDataType={sourceDataType}
+            targetDataType={targetDataType}
             targetHandleId={targetHandleId}
             markerStart={markerStartUrl}
             markerEnd={markerEndUrl}

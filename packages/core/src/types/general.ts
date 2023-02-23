@@ -59,6 +59,8 @@ export interface Connection {
   target: string | null;
   sourceHandle: string | null;
   targetHandle: string | null;
+  sourceDataType: string | null;
+  targetDataType: string | null;
 }
 
 export type ConnectionStatus = 'valid' | 'invalid';

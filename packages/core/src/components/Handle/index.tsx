@@ -30,6 +30,7 @@ const Handle = forwardRef<HTMLDivElement, HandleComponentProps>(
       isValidConnection = alwaysValid,
       isConnectable = true,
       id,
+      dataType,
       onConnect,
       children,
       className,
@@ -52,6 +53,7 @@ const Handle = forwardRef<HTMLDivElement, HandleComponentProps>(
 
     const handleId = id || null;
     const isTarget = type === 'target';
+    const handleDataType = dataType || null;
 
     const onConnectExtended = (params: Connection) => {
       const { defaultEdgeOptions, onConnect: onConnectAction, hasDefaultEdges } = store.getState();
@@ -76,6 +78,7 @@ const Handle = forwardRef<HTMLDivElement, HandleComponentProps>(
         handlePointerDown({
           event,
           handleId,
+          handleDataType,
           nodeId,
           onConnect: onConnectExtended,
           isTarget,
@@ -96,7 +99,7 @@ const Handle = forwardRef<HTMLDivElement, HandleComponentProps>(
       const { onClickConnectStart, onClickConnectEnd, connectionMode } = store.getState();
       if (!connectionStartHandle) {
         onClickConnectStart?.(event, { nodeId, handleId, handleType: type });
-        store.setState({ connectionStartHandle: { nodeId, type, handleId } });
+        store.setState({ connectionStartHandle: { nodeId, type, handleId, handleDataType } });
         return;
       }
 
@@ -111,6 +114,7 @@ const Handle = forwardRef<HTMLDivElement, HandleComponentProps>(
         connectionMode,
         connectionStartHandle.nodeId,
         connectionStartHandle.handleId || null,
+        connectionStartHandle.handleDataType || null,
         connectionStartHandle.type,
         isValidConnection,
         doc
@@ -129,6 +133,7 @@ const Handle = forwardRef<HTMLDivElement, HandleComponentProps>(
       <div
         data-handleid={handleId}
         data-nodeid={nodeId}
+        data-datatype={handleDataType}
         data-handlepos={position}
         data-id={`${nodeId}-${handleId}-${type}`}
         className={cc([

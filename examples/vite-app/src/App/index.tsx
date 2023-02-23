@@ -38,6 +38,7 @@ import UpdateNode from '../examples/UpdateNode';
 import UseUpdateNodeInternals from '../examples/UseUpdateNodeInternals';
 import UseReactFlow from '../examples/UseReactFlow';
 import Validation from '../examples/Validation';
+import AdvancedValidation from '../examples/AdvancedValidation';
 import UseKeyPress from '../examples/UseKeyPress';
 import EdgeRouting from '../examples/EdgeRouting';
 import CancelConnection from '../examples/CancelConnection';
@@ -261,6 +262,11 @@ const routes: IRoute[] = [
     name: 'Validation',
     path: '/validation',
     component: Validation,
+  },
+  {
+    name: 'Advanced Validation',
+    path: '/advanced-validaton',
+    component: AdvancedValidation
   },
   {
     name: 'useKeyPress',

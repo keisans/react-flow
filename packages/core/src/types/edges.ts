@@ -71,6 +71,8 @@ export type WrapEdgeProps<T = any> = Omit<Edge<T>, 'sourceHandle' | 'targetHandl
   onEdgeDoubleClick?: EdgeMouseHandler;
   sourceHandleId?: string | null;
   targetHandleId?: string | null;
+  sourceDataType?: string | null;
+  targetDataType?: string | null;
   sourceX: number;
   sourceY: number;
   targetX: number;
@@ -106,6 +108,8 @@ export type EdgeProps<T = any> = Pick<
     | 'targetPosition'
     | 'sourceHandleId'
     | 'targetHandleId'
+    | 'sourceDataType'
+    | 'targetDataType'
     | 'interactionWidth'
   > &
   EdgeLabelOptions & {

@@ -18,6 +18,7 @@ import {
 export function handlePointerDown({
   event,
   handleId,
+  handleDataType,
   nodeId,
   onConnect,
   isTarget,
@@ -29,6 +30,7 @@ export function handlePointerDown({
 }: {
   event: ReactMouseEvent | ReactTouchEvent;
   handleId: string | null;
+  handleDataType: string | null;
   nodeId: string;
   onConnect: OnConnect;
   isTarget: boolean;
@@ -118,6 +120,7 @@ export function handlePointerDown({
       connectionMode,
       nodeId,
       handleId,
+      handleDataType,
       isTarget ? 'target' : 'source',
       isValidConnection,
       doc
